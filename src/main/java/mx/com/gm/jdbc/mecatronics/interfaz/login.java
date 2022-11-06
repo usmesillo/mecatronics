@@ -4,6 +4,8 @@
  */
 package mx.com.gm.jdbc.mecatronics.interfaz;
 
+import Datos.mecatronicsService;
+
 /**
  *
  * @author Jaime
@@ -23,6 +25,7 @@ public class login extends javax.swing.JFrame {
         ajustarImagenes.ajustarImagen(logoUsuario, "src/main/java/assets/imagenes/usuario.png");
         
          ajustarImagenes.ajustarImagen(logoContraseña, "src/main/java/assets/imagenes/contraseña.png");
+         
     }
 
     /**
@@ -37,11 +40,11 @@ public class login extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         logoUsuario = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        txtContraseña = new javax.swing.JTextField();
         logoContraseña = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
+        txtContraseña = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(75, 189, 235));
@@ -60,17 +63,12 @@ public class login extends javax.swing.JFrame {
             }
         });
 
-        txtContraseña.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        txtContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtContraseña.setText("CONTRASEÑA");
-        txtContraseña.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 148, 184), 2));
-        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContraseñaActionPerformed(evt);
+        jPanel2.setBackground(new java.awt.Color(75, 189, 235));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
             }
         });
-
-        jPanel2.setBackground(new java.awt.Color(75, 189, 235));
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -94,6 +92,9 @@ public class login extends javax.swing.JFrame {
         logo.setMaximumSize(new java.awt.Dimension(30, 30));
         logo.setPreferredSize(new java.awt.Dimension(30, 30));
 
+        txtContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtContraseña.setText("jPasswordField1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -107,9 +108,9 @@ public class login extends javax.swing.JFrame {
                                 .addComponent(logoUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(logoContraseña, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addComponent(txtContraseña)))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(90, 90, 90)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -126,9 +127,9 @@ public class login extends javax.swing.JFrame {
                     .addComponent(logoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(logoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(76, 76, 76))
@@ -143,9 +144,10 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContraseñaActionPerformed
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+       
+        mecatronicsService.listarDatos(txtUsuario.getText(), txtContraseña.getText());
+    }//GEN-LAST:event_jPanel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -178,6 +180,7 @@ public class login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new login().setVisible(true);
+               
             }
             
         });
@@ -192,7 +195,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel logo;
     private javax.swing.JLabel logoContraseña;
     private javax.swing.JLabel logoUsuario;
-    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
