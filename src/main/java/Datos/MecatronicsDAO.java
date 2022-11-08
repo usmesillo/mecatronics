@@ -15,8 +15,9 @@ import javax.swing.JOptionPane;
  *
  * @author Jaime
  */
+
 public class MecatronicsDAO {
-    
+  public static String usuarioActual="";  
     public static boolean leerDatos(String user, String contraseña){
     Conexion db_connect = new Conexion();
     
@@ -32,6 +33,7 @@ public class MecatronicsDAO {
               if(rs.getString("usuario").equals(user)){
                   if(rs.getString("contraseña").equals(contraseña)){
                   entrar=true;
+                  usuarioActual=rs.getString("usuario");
                   encontrado=true;
                    JOptionPane.showMessageDialog(null, "Bienvenido "+ user);
                   }else{

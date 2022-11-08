@@ -5,6 +5,7 @@
 package mx.com.gm.jdbc.mecatronics.interfaz;
 
 import Datos.mecatronicsService;
+import java.awt.Color;
 
 /**
  *
@@ -45,6 +46,9 @@ public class login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
         txtContraseña = new javax.swing.JPasswordField();
+        jPanel3 = new javax.swing.JPanel();
+        panelX = new javax.swing.JPanel();
+        x = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(75, 189, 235));
@@ -64,6 +68,7 @@ public class login extends javax.swing.JFrame {
         });
 
         jPanel2.setBackground(new java.awt.Color(75, 189, 235));
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel2MouseClicked(evt);
@@ -95,12 +100,65 @@ public class login extends javax.swing.JFrame {
         txtContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtContraseña.setText("jPasswordField1");
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        panelX.setBackground(new java.awt.Color(255, 255, 255));
+        panelX.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelX.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelXMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelXMouseExited(evt);
+            }
+        });
+
+        x.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        x.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        x.setText("X");
+        x.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                xMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                xMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                xMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelXLayout = new javax.swing.GroupLayout(panelX);
+        panelX.setLayout(panelXLayout);
+        panelXLayout.setHorizontalGroup(
+            panelXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(x, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+        );
+        panelXLayout.setVerticalGroup(
+            panelXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(x, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 55, Short.MAX_VALUE)
+                .addGap(0, 36, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -116,11 +174,15 @@ public class login extends javax.swing.JFrame {
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(63, 63, 63))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -135,7 +197,7 @@ public class login extends javax.swing.JFrame {
                 .addGap(76, 76, 76))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 380, 510));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 360, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -146,8 +208,38 @@ public class login extends javax.swing.JFrame {
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
        
-        mecatronicsService.listarDatos(txtUsuario.getText(), txtContraseña.getText());
+        if(mecatronicsService.listarDatos(txtUsuario.getText(), txtContraseña.getText())==true){
+        Dashboard d1 =new Dashboard();
+        d1.show(true);
+        this.show(false);
+        
+        }
+        
     }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void xMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xMouseClicked
+       System.exit(WIDTH);
+    }//GEN-LAST:event_xMouseClicked
+
+    private void xMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xMouseEntered
+        x.setForeground(Color.white);
+         panelX.setBackground(Color.red);      
+       
+    }//GEN-LAST:event_xMouseEntered
+
+    private void xMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xMouseExited
+        
+        x.setForeground(Color.black);
+         panelX.setBackground(Color.white);
+    }//GEN-LAST:event_xMouseExited
+
+    private void panelXMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelXMouseEntered
+        
+    }//GEN-LAST:event_panelXMouseEntered
+
+    private void panelXMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelXMouseExited
+        
+    }//GEN-LAST:event_panelXMouseExited
 
     /**
      * @param args the command line arguments
@@ -192,11 +284,14 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel logoContraseña;
     private javax.swing.JLabel logoUsuario;
+    private javax.swing.JPanel panelX;
     private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtUsuario;
+    private javax.swing.JLabel x;
     // End of variables declaration//GEN-END:variables
 
  

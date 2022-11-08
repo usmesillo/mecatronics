@@ -11,8 +11,11 @@ package Datos;
  */
 public class mecatronicsService {
     
-    public static void listarDatos(String usuario, String contraseña){
-    MecatronicsDAO.leerDatos(usuario,contraseña);
+    public static boolean listarDatos(String usuario, String contraseña){
+    return MecatronicsDAO.leerDatos(usuario,contraseña);
     
     }
+    
+    
+    
 }
