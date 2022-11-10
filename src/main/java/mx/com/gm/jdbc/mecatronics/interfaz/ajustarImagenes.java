@@ -23,4 +23,12 @@ public class ajustarImagenes {
     labelName.setIcon(icon);
     
     }
+       public static void ajustarImagenPanel(JLabel labelName, String root){
+    
+    ImageIcon image=new ImageIcon(root);
+    Icon icon=new ImageIcon(image.getImage().getScaledInstance(labelName.getPreferredSize().width,labelName.getPreferredSize().height,Image.SCALE_SMOOTH));
+    labelName.setIcon(icon);
+    
+    }
+    
 }
