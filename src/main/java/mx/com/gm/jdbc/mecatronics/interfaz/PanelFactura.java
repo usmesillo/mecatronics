@@ -5,10 +5,15 @@
 package mx.com.gm.jdbc.mecatronics.interfaz;
 
 import Datos.Cliente;
+import Datos.Factura;
 import Datos.mecatronicsService;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JMenuItem;
@@ -21,29 +26,25 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jaime
  */
-public class PanelCliente extends javax.swing.JPanel {
+public class PanelFactura extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelCliente
      */
     DefaultTableModel modelo;
-    public PanelCliente() {
+    public PanelFactura() {
         initComponents();
         popUpTable();
          ajustarImagenes.ajustarImagenPanel(labelSigno,"src/main/java/assets/imagenes/interrogacion.png");
          modelo=new DefaultTableModel();
-         modelo.addColumn("Documento");
-          modelo.addColumn("Nombre");
-           modelo.addColumn("Apellido");
-            modelo.addColumn("Email");
-             modelo.addColumn("Telefono");
-              modelo.addColumn("Pais");
-               modelo.addColumn("Departamento");
-                modelo.addColumn("Ciudad");
-                 modelo.addColumn("Barrio");
-                  modelo.addColumn("Direccion");
-                   modelo.addColumn("Plan");
-                    modelo.addColumn("Estado");
+         modelo.addColumn("id Factura");
+          modelo.addColumn("Documento Cliente");
+           modelo.addColumn("Nombre Cliente");
+            modelo.addColumn("Apellido Cliente");
+             modelo.addColumn("Motivo Factura");
+              modelo.addColumn("Valor Factura");
+               modelo.addColumn("Fecha Facturación");
+                
          tabla.setModel(modelo);
                     
          
@@ -92,7 +93,7 @@ public class PanelCliente extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel1.setText("CLIENTES");
+        jLabel1.setText("FACTURAS");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 136, 29));
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -242,7 +243,7 @@ public class PanelCliente extends javax.swing.JPanel {
         labelNuevoCliente.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         labelNuevoCliente.setForeground(new java.awt.Color(255, 255, 255));
         labelNuevoCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelNuevoCliente.setText("Crear nuevo cliente");
+        labelNuevoCliente.setText("Crear Facturación");
         labelNuevoCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelNuevoCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -286,28 +287,32 @@ public class PanelCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void labelBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelBuscarMouseClicked
-         DefaultTableModel tb = (DefaultTableModel) tabla.getModel();
-        int a = tabla.getRowCount()-1;
-        for (int i = a; i >= 0; i--) {          
-        tb.removeRow(tb.getRowCount()-1);
-        }
+       //  DefaultTableModel tb = (DefaultTableModel) tabla.getModel();
+      //  int a = tabla.getRowCount()-1;
+       // for (int i = a; i >= 0; i--) {          
+       // tb.removeRow(tb.getRowCount()-1);
+       // }
+     
+        String []info=new String[7];
+        //Cliente clienteAmostrar=mecatronicsService.leerClientePorDocumento(txtBuscador.getText());
+        ArrayList<Factura> facturasAMostrar=mecatronicsService.leerFacturasPorDocumento(txtBuscador.getText());
+         //System.out.println(facturasAMostrar.get(0).getFechaFacturacion());
+       for(int i=0;i < facturasAMostrar.size();i++){
+        info[0]= Integer.toString(facturasAMostrar.get(i).getIdFactura());
+        info[1]=facturasAMostrar.get(i).getDocumentoCliente();
+        info[2]=mecatronicsService.leerClientePorDocumento(facturasAMostrar.get(i).getDocumentoCliente()).getNombre();
+        info[3]=mecatronicsService.leerClientePorDocumento(facturasAMostrar.get(i).getDocumentoCliente()).getApellido();
+        info[4]=facturasAMostrar.get(i).getMotivoFactura();
+        info[5]=String.valueOf(facturasAMostrar.get(i).getValorFactura());
+        info[6]=facturasAMostrar.get(i).getFechaFacturacion();
+       /* DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date date =facturasAMostrar.get(i).getFechaFacturacion() ;        
+		String dateToStr = dateFormat.format(date);
         
-        String []info=new String[12];
-        Cliente clienteAmostrar=mecatronicsService.leerClientePorDocumento(txtBuscador.getText());
-        info[0]=clienteAmostrar.getDocumento();
-        info[1]=clienteAmostrar.getNombre();
-        info[2]=clienteAmostrar.getApellido();
-        info[3]=clienteAmostrar.getEmail();
-        info[4]=clienteAmostrar.getTelefono();
-        info[5]=String.valueOf(clienteAmostrar.getIdPais());
-        info[6]=String.valueOf(clienteAmostrar.getIdDepartamento());
-        info[7]=String.valueOf(clienteAmostrar.getIdCiudad());
-        info[8]=clienteAmostrar.getBarrio();
-        info[9]=clienteAmostrar.getDireccion();
-        info[10]=String.valueOf(clienteAmostrar.getPlanId());
-        info[11]=String.valueOf(clienteAmostrar.getIdEstado());
+           */
+        
         modelo.addRow(info);
-        
+        }
         
     }//GEN-LAST:event_labelBuscarMouseClicked
 
@@ -317,7 +322,7 @@ public class PanelCliente extends javax.swing.JPanel {
             
             Dashboard.cambiarPanel(p1);
         } catch (SQLException ex) {
-            Logger.getLogger(PanelCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PanelFactura.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_labelNuevoClienteMouseClicked
 
@@ -326,7 +331,7 @@ public class PanelCliente extends javax.swing.JPanel {
     }
 
     public static void setTabla(JTable tabla) {
-        PanelCliente.tabla = tabla;
+        PanelFactura.tabla = tabla;
     }
 
     
@@ -355,7 +360,7 @@ public class PanelCliente extends javax.swing.JPanel {
                     
                     Dashboard.cambiarPanel(p1);
                 } catch (SQLException ex) {
-                    Logger.getLogger(PanelCliente.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(PanelFactura.class.getName()).log(Level.SEVERE, null, ex);
                 }
                
             }

@@ -17,7 +17,7 @@ public class Empleado extends Persona{
     String rutaImagen;
 
     public Empleado(int idEmpleado, int idPersona, String usuario, String contraseña, String cargo, int id, String nombre, String apellido,String rutaImagen) {
-        super(id, nombre, apellido);
+        super( nombre, apellido);
         this.idEmpleado = idEmpleado;
         this.idPersona = idPersona;
         this.usuario = usuario;

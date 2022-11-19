@@ -63,10 +63,7 @@
                               <Component id="txtDocumento" min="-2" pref="516" max="-2" attributes="0"/>
                               <Component id="boxDepartamentos" alignment="0" min="-2" pref="226" max="-2" attributes="0"/>
                               <Component id="boxPaises" alignment="0" min="-2" pref="226" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="boxCiudades" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="boxCiudades" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">

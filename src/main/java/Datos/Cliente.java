@@ -12,20 +12,29 @@ public class Cliente extends Persona{
     
     String documento,telefono,email,barrio,direccion;
     
-    int planId,personaId,idDepartamento,idCiudad,idPais;
+    int planId,idDepartamento,idCiudad,idPais,idEstado;
 
-    public Cliente(String documento, String telefono, String email, String barrio, String direccion, int planId, int personaId, int idDepartamento, int idCiudad, int idPais, int id, String nombre, String apellido) {
-        super(id, nombre, apellido);
+    
+    public Cliente(String documento, String telefono, String email, String barrio, String direccion, int planId, int idDepartamento, int idCiudad, int idPais, String nombre, String apellido,int idEstado) {
+        super(nombre, apellido);
         this.documento = documento;
         this.telefono = telefono;
         this.email = email;
         this.barrio = barrio;
         this.direccion = direccion;
         this.planId = planId;
-        this.personaId = personaId;
         this.idDepartamento = idDepartamento;
         this.idCiudad = idCiudad;
         this.idPais = idPais;
+        this.idEstado=idEstado;
+    }
+
+    public int getIdEstado() {
+        return idEstado;
+    }
+
+    public void setIdEstado(int idEstado) {
+        this.idEstado = idEstado;
     }
 
     public String getDocumento() {
@@ -76,13 +85,7 @@ public class Cliente extends Persona{
         this.planId = planId;
     }
 
-    public int getPersonaId() {
-        return personaId;
-    }
-
-    public void setPersonaId(int personaId) {
-        this.personaId = personaId;
-    }
+ 
 
     public int getIdDepartamento() {
         return idDepartamento;

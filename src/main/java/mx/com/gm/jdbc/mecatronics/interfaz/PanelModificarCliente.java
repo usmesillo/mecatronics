@@ -15,16 +15,24 @@ import java.util.logging.Logger;
  *
  * @author Jaime
  */
-public class PanelAgregarCliente extends javax.swing.JPanel {
+public class PanelModificarCliente extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelAgregarCliente
      */
-    public PanelAgregarCliente() throws SQLException {
+    Cliente clienteSeleccionado;
+    public PanelModificarCliente() throws SQLException {
         initComponents();
-        mecatronicsService.leerPlanes();
-        mecatronicsService.leerPaises();
-      
+        mecatronicsService.leerPlanesPanelModificarClientes();
+        mecatronicsService.leerPaisesPanelModificarClientes();
+        clienteSeleccionado=mecatronicsService.leerClienteTabla();
+      txtNombre.setText(clienteSeleccionado.getNombre());
+      txtApellido.setText(clienteSeleccionado.getApellido());
+      txtBarrio.setText(clienteSeleccionado.getBarrio());
+      txtDocumento.setText(clienteSeleccionado.getDocumento());
+      txtEmail.setText(clienteSeleccionado.getEmail());
+      txtTelefono.setText(clienteSeleccionado.getTelefono());
+      txtDireccion.setText(clienteSeleccionado.getDireccion());
         
     }
 
@@ -353,13 +361,13 @@ boxDepartamentos.addItem(item);
         try {
               if (evt.getStateChange() == ItemEvent.SELECTED) {
             //
-            mecatronicsService.leerCiudades(mecatronicsService.devoldorIdDepartamentosPorNombre(boxDepartamentos.getSelectedItem().toString()));
+            mecatronicsService.leerCiudadesPanelModificarClientes(mecatronicsService.devoldorIdDepartamentosPorNombre(boxDepartamentos.getSelectedItem().toString()));
             System.out.println("hola");
             System.out.println(mecatronicsService.devoldorIdDepartamentosPorNombre(boxDepartamentos.getSelectedItem().toString()));
               }
             
         } catch (SQLException ex) {
-            Logger.getLogger(PanelAgregarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PanelModificarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_boxDepartamentosItemStateChanged
 
@@ -368,12 +376,12 @@ boxDepartamentos.addItem(item);
         try {
               if (evt.getStateChange() == ItemEvent.SELECTED) {
             //
-            mecatronicsService.leerDepartamentos(mecatronicsService.devoldorIdPaisesPorNombre(boxPaises.getSelectedItem().toString()));
+            mecatronicsService.leerDepartamentosPanelModificarClientes(mecatronicsService.devoldorIdPaisesPorNombre(boxPaises.getSelectedItem().toString()));
             //
               }
             
         } catch (SQLException ex) {
-            Logger.getLogger(PanelAgregarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PanelModificarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_boxPaisesItemStateChanged
 
@@ -402,25 +410,15 @@ boxDepartamentos.addItem(item);
     }//GEN-LAST:event_txtDocumentoActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        Cliente nuevoCliente=new Cliente(txtDocumento.getText(), txtTelefono.getText(), txtEmail.getText(), txtBarrio.getText(), txtDireccion.getText(), mecatronicsService.devoldorIdPlan(boxPlanes.getSelectedItem().toString()),mecatronicsService.devoldorIdDepartamentosPorNombre(boxDepartamentos.getSelectedItem().toString()), mecatronicsService.devoldorIdCiudadesPorNombre(boxCiudades.getSelectedItem().toString()), mecatronicsService.devoldorIdPaisesPorNombre(boxPaises.getSelectedItem().toString()),txtNombre.getText(),txtApellido.getText(), 1);
+        //Cliente nuevoCliente=new Cliente(txtDocumento.getText(), txtTelefono.getText(), txtEmail.getText(), txtBarrio.getText(), txtDireccion.getText(), mecatronicsService.devoldorIdPlan(boxPlanes.getSelectedItem().toString()),mecatronicsService.devoldorIdDepartamentosPorNombre(boxDepartamentos.getSelectedItem().toString()), mecatronicsService.devoldorIdCiudadesPorNombre(boxCiudades.getSelectedItem().toString()), mecatronicsService.devoldorIdPaisesPorNombre(boxPaises.getSelectedItem().toString()),txtNombre.getText(),txtApellido.getText(), 1);
        // Cliente nuevoCliente = new Cliente("10213212", "234234", "sdsdfsdf", "sdfsfdsd", "dgdgdgfdg", 1, 1, 1, 1, "sdbcssfd", "dfsfsdf", 1);
-        System.out.println(nuevoCliente);
+       // System.out.println(nuevoCliente);
         try {
-            mecatronicsService.agregarCliente(nuevoCliente);
-            txtApellido.setText("");
-            txtNombre.setText("");
-            txtBarrio.setText("");
-            txtTelefono.setText("");
-            txtEmail.setText("");
-            txtDireccion.setText("");
-            txtDocumento.setText("");
-            boxCiudades.setSelectedIndex(0);
-            boxDepartamentos.setSelectedIndex(0);
-            boxPaises.setSelectedIndex(0);
-            boxPlanes.setSelectedIndex(0);
+            mecatronicsService.modificarClientes(txtDocumento.getText(),clienteSeleccionado.getDocumento(), txtNombre.getText(), txtApellido.getText(), txtDireccion.getText(), mecatronicsService.devoldorIdPlan(boxPlanes.getSelectedItem().toString()), txtTelefono.getText(), txtEmail.getText(), txtBarrio.getText(), mecatronicsService.devoldorIdPaisesPorNombre(boxPaises.getSelectedItem().toString()), mecatronicsService.devoldorIdCiudadesPorNombre(boxCiudades.getSelectedItem().toString()), mecatronicsService.devoldorIdDepartamentosPorNombre(boxDepartamentos.getSelectedItem().toString()));
+          
             
         } catch (SQLException ex) {
-            Logger.getLogger(PanelAgregarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PanelModificarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jLabel1MouseClicked
 

@@ -36,6 +36,8 @@ public class Dashboard extends javax.swing.JFrame {
         ajustarImagenes.ajustarImagen(logoCasa, "src/main/java/assets/imagenes/casa.png");
           ajustarImagenes.ajustarImagen(logoClientes, "src/main/java/assets/imagenes/clientes.png");
            ajustarImagenes.ajustarImagen(logoPlanes, "src/main/java/assets/imagenes/wifi.png");
+           ajustarImagenes.ajustarImagen(logoFacturas, "src/main/java/assets/imagenes/factura.png");
+    
          
         
     }
@@ -74,6 +76,9 @@ public class Dashboard extends javax.swing.JFrame {
         panelPlanes = new javax.swing.JPanel();
         labelPlanes = new javax.swing.JLabel();
         logoPlanes = new javax.swing.JLabel();
+        panelFacturas = new javax.swing.JPanel();
+        labelFacturas = new javax.swing.JLabel();
+        logoFacturas = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         labelFecha = new javax.swing.JLabel();
         labelBienvenido = new javax.swing.JLabel();
@@ -217,6 +222,47 @@ public class Dashboard extends javax.swing.JFrame {
 
         jPanel3.add(panelPlanes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 230, -1));
 
+        panelFacturas.setBackground(new java.awt.Color(16, 90, 171));
+        panelFacturas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelFacturasMouseClicked(evt);
+            }
+        });
+
+        labelFacturas.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        labelFacturas.setForeground(new java.awt.Color(255, 255, 255));
+        labelFacturas.setText("Facturas");
+        labelFacturas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        labelFacturas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelFacturasMouseClicked(evt);
+            }
+        });
+
+        logoFacturas.setText("jLabel2");
+
+        javax.swing.GroupLayout panelFacturasLayout = new javax.swing.GroupLayout(panelFacturas);
+        panelFacturas.setLayout(panelFacturasLayout);
+        panelFacturasLayout.setHorizontalGroup(
+            panelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFacturasLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logoFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panelFacturasLayout.setVerticalGroup(
+            panelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFacturasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logoFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
+            .addComponent(labelFacturas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(panelFacturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 230, -1));
+
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 139, 232, 330));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 630));
@@ -280,7 +326,7 @@ public class Dashboard extends javax.swing.JFrame {
       panelPrincipal.setBackground(new Color(19, 102, 192));
       panelClientes.setBackground(new Color(16, 90, 171));
         panelPlanes.setBackground(new Color(16, 90, 171));
-      
+       panelFacturas.setBackground(new Color(16, 90, 171));
         PanelPrincipal p1=new PanelPrincipal();
         p1.setSize(690,420);
         p1.setLocation(0,0);
@@ -295,6 +341,7 @@ public class Dashboard extends javax.swing.JFrame {
         panelClientes.setBackground(new Color(19, 102, 192));
         panelPrincipal.setBackground(new Color(16, 90, 171));
          panelPlanes.setBackground(new Color(16, 90, 171));
+          panelFacturas.setBackground(new Color(16, 90, 171));
         PanelCliente p1=new PanelCliente();
         p1.setSize(690,420);
         p1.setLocation(0,0);
@@ -302,6 +349,7 @@ public class Dashboard extends javax.swing.JFrame {
         contenido.add(p1,BorderLayout.CENTER);
         contenido.revalidate();
         contenido.repaint();
+        
     }//GEN-LAST:event_labelClientesMouseClicked
 
     private void labelPlanesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelPlanesMouseClicked
@@ -309,7 +357,29 @@ public class Dashboard extends javax.swing.JFrame {
         panelPlanes.setBackground(new Color(19, 102, 192));
         panelClientes.setBackground(new Color(16, 90, 171));
         panelPrincipal.setBackground(new Color(16, 90, 171));
+        panelFacturas.setBackground(new Color(16, 90, 171));
     }//GEN-LAST:event_labelPlanesMouseClicked
+
+    private void labelFacturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelFacturasMouseClicked
+      
+        panelFacturas.setBackground(new Color(19, 102, 192));
+        panelPlanes.setBackground(new Color(16, 90, 171));
+        panelClientes.setBackground(new Color(16, 90, 171));
+        panelPrincipal.setBackground(new Color(16, 90, 171));
+        PanelFactura p1 = new PanelFactura();
+         p1=new PanelFactura();
+        p1.setSize(690,420);
+        p1.setLocation(0,0);
+        contenido.removeAll();
+        contenido.add(p1,BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
+       
+    }//GEN-LAST:event_labelFacturasMouseClicked
+
+    private void panelFacturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelFacturasMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panelFacturasMouseClicked
 
     
     /**
@@ -343,14 +413,17 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel labelBienvenido;
     private javax.swing.JLabel labelClientes;
+    private javax.swing.JLabel labelFacturas;
     private javax.swing.JLabel labelFecha;
     private javax.swing.JLabel labelMecatronics;
     private javax.swing.JLabel labelPlanes;
     private javax.swing.JLabel labelPrincipal;
     private javax.swing.JLabel logoCasa;
     private javax.swing.JLabel logoClientes;
+    private javax.swing.JLabel logoFacturas;
     private javax.swing.JLabel logoPlanes;
     private javax.swing.JPanel panelClientes;
+    private javax.swing.JPanel panelFacturas;
     private javax.swing.JPanel panelPlanes;
     private javax.swing.JPanel panelPrincipal;
     // End of variables declaration//GEN-END:variables
